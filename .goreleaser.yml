@@ -1,0 +1,46 @@
+project_name: rep
+
+builds:
+  - main: ./main.go
+    binary: rep
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+    goarm:
+      - 7
+    ignore:
+      - goos: darwin
+        goarch: 386
+
+brews:
+  - tap:
+      owner: wyattjoh
+      name: homebrew-stable
+    folder: Formula
+    homepage: https://github.com/wyattjoh/rep
+    description: Javascript reproduction manager, written in Go
+    test: |
+      system "#{bin}/rep -v"
+    install: |
+      bin.install "rep"
+
+archives:
+  - name_template: "{{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+    files:
+      - LICENSE.md
+      - README.md
+
+release:
+  github:
+    owner: wyattjoh
+    name: rep
