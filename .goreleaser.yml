@@ -1,22 +1,7 @@
 project_name: rep
 
 builds:
-  - main: ./main.go
-    binary: rep
-    goos:
-      - windows
-      - darwin
-      - linux
-    goarch:
-      - amd64
-      - 386
-      - arm
-      - arm64
-    goarm:
-      - 7
-    ignore:
-      - goos: darwin
-        goarch: 386
+  - binary: rep
 
 brews:
   - tap:
