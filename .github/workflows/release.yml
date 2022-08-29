@@ -22,7 +22,7 @@ jobs:
           version: v1.46.2
       - name: Test Build
         run: go build .
-      - uses: goreleaser/goreleaser-action@v3.0.0
+      - uses: goreleaser/goreleaser-action@v3.1.0
         with:
           version: latest
           args: release --rm-dist
